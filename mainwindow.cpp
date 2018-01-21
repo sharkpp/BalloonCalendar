@@ -108,7 +108,7 @@ void MainWindow::focusInEvent(QFocusEvent *event)
 
 bool MainWindow::event(QEvent *e)
 {
-    qDebug() << e->type() << qApp->activeWindow() << (qApp->activeWindow() == this ? "AM" : "AM NOT");
+    qDebug() << "MainWindow::event" << e->type() << qApp->activeWindow() << (qApp->activeWindow() == this ? "AM" : "AM NOT");
     switch ( e->type() )
     {
     case QEvent::WindowActivate:

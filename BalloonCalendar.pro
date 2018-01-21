@@ -27,12 +27,17 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     balloondialog.cpp \
-    calendarpopup.cpp
+    calendarpopup.cpp \
+    focuser.cpp
+
+macx:SOURCES += focuser.mm
+linux|win32:SOURCES += focuser.cpp
 
 HEADERS += \
         mainwindow.h \
     balloondialog.h \
-    calendarpopup.h
+    calendarpopup.h \
+    focuser.h
 
 FORMS += \
         mainwindow.ui \
@@ -40,4 +45,5 @@ FORMS += \
 
 macx {
  QMAKE_INFO_PLIST = Info.plist
+ LIBS += -framework AppKit
 }

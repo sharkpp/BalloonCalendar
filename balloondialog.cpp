@@ -5,11 +5,15 @@
 #include <QEvent>
 #include <QTimer>
 #include <QDebug>
+#include <QApplication>
+#include "focuser.h"
 
 BalloonDialog::BalloonDialog(QWidget *parent)
     : QDialog(parent)
     , lazyShowWindow(new QTimer(this))
 {
+    qDebug() << "BalloonDialog::BalloonDialog()";
+
     connect(lazyShowWindow, SIGNAL(timeout()), this, SLOT(on_lazyShowWindow()));
 
     setModal(true);
@@ -49,7 +53,8 @@ void BalloonDialog::resizeEvent(QResizeEvent *)
 
 bool BalloonDialog::event(QEvent *e)
 {
-    qDebug() << "BalloonDialog::event" << e->type();
+//    qDebug() << "BalloonDialog::event" << e->type();
+    qDebug() << "BalloonDialog::event" << e->type() << QApplication::activeWindow() << (QApplication::activeWindow() == this ? "AM" : "AM NOT");
     if (QEvent::WindowDeactivate == e->type()) {
         qDebug() << "BalloonDialog::event" << __LINE__;
         done(0);
@@ -61,16 +66,18 @@ bool BalloonDialog::event(QEvent *e)
 
 void BalloonDialog::focusOutEvent(QFocusEvent *event)
 {
-    qDebug() << "focusOutEvent";
+    qDebug() << "BalloonDialog::focusOutEvent";
     //done(0);
 }
 
 void BalloonDialog::showEvent(QShowEvent *event)
 {
-    qDebug() << "showEvent";
-    activateWindow();
-    setFocus();
+    qDebug() << "BalloonDialog::showEvent";
+    //activateWindow();
+    //setFocus();
     //lazyShowWindow->start(10000);
+    Focuser f(this);
+    f.focus();
 }
 
 void BalloonDialog::on_lazyShowWindow()
