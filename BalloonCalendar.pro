@@ -22,22 +22,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+include(./libs/qtpopover/sources/popover.pri)
 
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    balloondialog.cpp \
-    calendarpopup.cpp \
-    focuser.cpp
-
-macx:SOURCES += focuser.mm
-linux|win32:SOURCES += focuser.cpp
+    calendarpopup.cpp
 
 HEADERS += \
         mainwindow.h \
-    balloondialog.h \
-    calendarpopup.h \
-    focuser.h
+    calendarpopup.h
 
 FORMS += \
         mainwindow.ui \
@@ -45,5 +39,4 @@ FORMS += \
 
 macx {
  QMAKE_INFO_PLIST = Info.plist
- LIBS += -framework AppKit
 }

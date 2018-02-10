@@ -5,7 +5,7 @@
 #include <QDebug>
 
 CalendarPopup::CalendarPopup(QWidget *parent)
-    : BalloonDialog(parent)
+    : Popover(parent)
     , ui(new Ui::CalendarPopup)
 {
     ui->setupUi(this);

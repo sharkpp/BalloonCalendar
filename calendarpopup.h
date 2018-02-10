@@ -1,14 +1,14 @@
 #ifndef CALENDARPOPUP_H
 #define CALENDARPOPUP_H
 
-#include "balloondialog.h"
+#include "popover.h"
 
 namespace Ui {
 class CalendarPopup;
 }
 
 class CalendarPopup
-        : public BalloonDialog
+        : public Popover
 {
     Q_OBJECT
 

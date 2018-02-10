@@ -1,0 +1,3 @@
+[submodule "libs/qtpopover"]
+	path = libs/qtpopover
+	url = git@github.com:sharkpp/qtpopover.git
